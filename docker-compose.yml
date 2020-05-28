@@ -2,4 +2,4 @@
 services:
   bot:
     build: .
-    image: mydiscordbot
+    image: lpmarci/mydiscordbot
