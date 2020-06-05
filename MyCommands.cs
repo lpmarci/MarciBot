@@ -224,7 +224,7 @@ namespace DiscordBot
             StreamerInformation si = StreamerInformation.Instance();
             si.Load();
 
-            if (ctx.Channel.Name.Equals("stream📡"))
+            if (ctx.Channel.Name.Equals("stream📡") && Global.token==false)
             {
 
                 //set the token
@@ -242,7 +242,13 @@ namespace DiscordBot
                 
 
             }
-            else
+            else if (Global.token == true)
+            {
+                var emoji2 = DiscordEmoji.FromName(ctx.Client, ":white_check_mark:");
+                await ctx.TriggerTypingAsync();
+                await ctx.RespondAsync($"{emoji2} A stream értesítések már el vannak indítva.");
+            }
+            else if (!ctx.Channel.Name.Equals("stream📡"))
             {
                 var emoji1 = DiscordEmoji.FromName(ctx.Client, ":no_entry_sign:");
                 await ctx.TriggerTypingAsync();
